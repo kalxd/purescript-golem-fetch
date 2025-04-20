@@ -1,5 +1,8 @@
 module Network.Http.URLSearch where
 
+import Prelude
+
+import Data.Tuple (Tuple(..))
 import Network.Http.Internal.URL as URL
 
 empty :: URL.URLSearchParams
@@ -10,3 +13,6 @@ singleton key value = URL._search_make [[key, value]]
 
 fromString :: String -> URL.URLSearchParams
 fromString = URL._search_make
+
+fromArray :: Array (Tuple String String) -> URL.URLSearchParams
+fromArray = URL._search_make <<< map \(Tuple a b) -> [a, b]
