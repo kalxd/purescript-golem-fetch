@@ -1,0 +1,14 @@
+package:
+  name: agent-fetch
+  dependencies:
+    - console
+    - effect
+    - prelude
+    - maybe
+  test:
+    main: Test.Main
+    dependencies: []
+workspace:
+  packageSet:
+    registry: 64.1.1
+  extraPackages: {}

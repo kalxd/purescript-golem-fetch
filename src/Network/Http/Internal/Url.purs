@@ -1,0 +1,31 @@
+module Network.Http.Internal.Url where
+
+import Prelude
+
+import Data.Maybe (Maybe)
+
+foreign import data URLSearchParams :: Type
+
+instance Show URLSearchParams where
+  show = _search_show
+
+foreign import _search_empty :: URLSearchParams
+
+foreign import _search_make :: forall a. a -> URLSearchParams
+
+foreign import _search_show :: URLSearchParams -> String
+
+foreign import _search_append :: String -> String -> URLSearchParams -> URLSearchParams
+
+foreign import _search_delete :: String -> URLSearchParams -> URLSearchParams
+
+foreign import _search_get :: (String -> Maybe String) -> Maybe String -> String -> URLSearchParams -> Maybe String
+
+foreign import data URL :: Type
+
+instance Show URL where
+  show = _show
+
+foreign import _url :: String -> URL
+
+foreign import _show :: URL -> String
