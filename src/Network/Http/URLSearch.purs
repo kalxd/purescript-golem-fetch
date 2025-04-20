@@ -6,6 +6,9 @@ import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..))
 import Network.Http.Internal.URL as URL
 
+traceShow :: URL.URLSearchParams -> URL.URLSearchParams
+traceShow = URL._search_traceShow
+
 empty :: URL.URLSearchParams
 empty = URL._search_empty
 

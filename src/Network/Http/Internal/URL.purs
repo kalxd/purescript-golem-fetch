@@ -8,13 +8,13 @@ import Data.Tuple (Tuple)
 foreign import data URLSearchParams :: Type
 
 instance Show URLSearchParams where
-  show = _search_show
+  show = _search_toString
 
 foreign import _search_empty :: URLSearchParams
 
 foreign import _search_make :: forall a. a -> URLSearchParams
 
-foreign import _search_show :: URLSearchParams -> String
+foreign import _search_traceShow :: URLSearchParams -> URLSearchParams
 
 foreign import _search_toString :: URLSearchParams -> String
 

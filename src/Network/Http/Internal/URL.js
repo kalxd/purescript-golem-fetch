@@ -5,7 +5,10 @@ export const _search_empty = new url.URLSearchParams();
 
 export const _search_make = o => new url.URLSearchParams(o);
 
-export const _search_show = s => s;
+export const _search_traceShow = s => {
+	console.log(s);
+	return s;
+};
 
 export const _search_toString = s => s.toString();
 
