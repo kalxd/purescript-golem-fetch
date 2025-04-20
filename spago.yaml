@@ -5,6 +5,7 @@ package:
     - effect
     - prelude
     - maybe
+    - tuples
   test:
     main: Test.Main
     dependencies: []

@@ -8,7 +8,8 @@
             "console",
             "effect",
             "maybe",
-            "prelude"
+            "prelude",
+            "tuples"
           ],
           "build_plan": [
             "console",
@@ -19,6 +20,7 @@
             "newtype",
             "prelude",
             "safe-coerce",
+            "tuples",
             "unsafe-coerce"
           ]
         },
@@ -631,6 +633,16 @@
       "integrity": "sha256-a1ibQkiUcbODbLE/WAq7Ttbbh9ex+x33VCQ7GngKudU=",
       "dependencies": [
         "unsafe-coerce"
+      ]
+    },
+    "tuples": {
+      "type": "registry",
+      "version": "7.0.0",
+      "integrity": "sha256-1rXgTomes9105BjgXqIw0FL6Fz1lqqUTLWOumhWec1M=",
+      "dependencies": [
+        "control",
+        "invariant",
+        "prelude"
       ]
     },
     "unsafe-coerce": {
