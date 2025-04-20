@@ -7,6 +7,8 @@ export const _search_make = o => new url.URLSearchParams(o);
 
 export const _search_show = s => s;
 
+export const _search_toString = s => s.toString();
+
 export const _search_append = key => value => search => {
 	const clone = _search_make(search);
 	clone.append(key, value);

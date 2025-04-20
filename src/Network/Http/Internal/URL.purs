@@ -16,6 +16,8 @@ foreign import _search_make :: forall a. a -> URLSearchParams
 
 foreign import _search_show :: URLSearchParams -> String
 
+foreign import _search_toString :: URLSearchParams -> String
+
 foreign import _search_append :: String -> String -> URLSearchParams -> URLSearchParams
 
 foreign import _search_delete :: String -> URLSearchParams -> URLSearchParams
