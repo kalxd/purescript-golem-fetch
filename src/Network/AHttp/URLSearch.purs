@@ -1,10 +1,13 @@
-module Network.AHttp.URLSearch where
+module Network.AHttp.URLSearch ( module Network.AHttp.URLSearch
+                               , module Output
+                               ) where
 
 import Prelude hiding (append)
 
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..))
 import Network.AHttp.Internal.URL as URL
+import Network.AHttp.Internal.URL (URLSearchParams) as Output
 
 traceShow :: URL.URLSearchParams -> URL.URLSearchParams
 traceShow = URL._search_traceShow
