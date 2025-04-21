@@ -35,8 +35,8 @@ module Node.Fetch.URL ( module Output
 import Prelude
 
 import Data.Maybe (Maybe(..), fromMaybe)
-import Node.Fetch.Internal.URL (URL) as Output
-import Node.Fetch.Internal.URL as URL
+import Node.Fetch.Unsafe.URL (URL) as Output
+import Node.Fetch.Unsafe.URL as URL
 
 checkEmptyString :: String -> Maybe String
 checkEmptyString "" = Nothing

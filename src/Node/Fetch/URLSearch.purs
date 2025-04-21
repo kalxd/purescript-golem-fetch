@@ -6,8 +6,8 @@ import Prelude hiding (append)
 
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..))
-import Node.Fetch.Internal.URL (URLSearchParams) as Output
-import Node.Fetch.Internal.URL as URL
+import Node.Fetch.Unsafe.URL (URLSearchParams) as Output
+import Node.Fetch.Unsafe.URL as URL
 
 traceShow :: URL.URLSearchParams -> URL.URLSearchParams
 traceShow = URL._search_traceShow

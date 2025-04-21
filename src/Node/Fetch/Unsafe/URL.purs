@@ -1,4 +1,4 @@
-module Node.Fetch.Internal.URL where
+module Node.Fetch.Unsafe.URL where
 
 import Prelude
 
