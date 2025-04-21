@@ -6,8 +6,8 @@ import Prelude hiding (append)
 
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..))
-import Network.AHttp.Internal.URL as URL
 import Network.AHttp.Internal.URL (URLSearchParams) as Output
+import Network.AHttp.Internal.URL as URL
 
 traceShow :: URL.URLSearchParams -> URL.URLSearchParams
 traceShow = URL._search_traceShow
@@ -23,6 +23,9 @@ fromString = URL._search_make
 
 fromArray :: Array (Tuple String String) -> URL.URLSearchParams
 fromArray = URL._search_make <<< map \(Tuple a b) -> [a, b]
+
+fromRecord :: forall r. {|r} -> URL.URLSearchParams
+fromRecord = URL._search_make
 
 insert :: String -> String -> URL.URLSearchParams -> URL.URLSearchParams
 insert = URL._search_set
