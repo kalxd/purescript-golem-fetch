@@ -39,3 +39,20 @@ foreign import _url_host :: URL -> String
 foreign import _url_setHost :: String -> URL -> URL
 foreign import _url_hostname :: URL -> String
 foreign import _url_setHostname :: String -> URL -> URL
+foreign import _url_href :: URL -> String
+foreign import _url_setHref :: String -> URL -> URL
+foreign import _url_origin :: URL -> String
+foreign import _url_setOrigin :: String -> URL -> URL
+foreign import _url_password :: URL -> String
+foreign import _url_setPassword :: String -> URL -> URL
+foreign import _url_pathname :: URL -> String
+foreign import _url_setPathname :: String -> URL -> URL
+foreign import _url_port :: URL -> String
+foreign import _url_setPort :: String -> URL -> URL
+foreign import _url_protocol :: URL -> String
+foreign import _url_setProtocol :: String -> URL -> URL
+foreign import _url_search :: URL -> String
+foreign import _url_setSearch :: String -> URL -> URL
+foreign import _url_searchParams :: URL -> URLSearchParams
+foreign import _url_username :: URL -> String
+foreign import _url_setUsername :: String -> URL -> URL

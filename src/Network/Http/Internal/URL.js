@@ -76,7 +76,6 @@ export const _url_traceShow = u => {
 };
 
 export const _url_hash = u => u.hash;
-
 export const _url_setHash = hash => u => {
 	const clone = _url_make(u);
 	clone.hash = hash;
@@ -84,7 +83,6 @@ export const _url_setHash = hash => u => {
 };
 
 export const _url_host = u => u.host;
-
 export const _url_setHost = host => u => {
 	const clone = _url_make(u);
 	clone.host = host;
@@ -92,10 +90,67 @@ export const _url_setHost = host => u => {
 };
 
 export const _url_hostname = u => u.hostname;
-
 export const _url_setHostname = hostname => u => {
 	const clone = _url_make(u);
 	clone.hostname = hostname;
+	return clone;
+};
+
+export const _url_href = u => u.href;
+export const _url_setHref = href => u => {
+	const clone = _url_make(u);
+	clone.href = href;
+	return clone;
+};
+
+export const _url_origin = u => u.origin;
+export const _url_setOrigin = origin => u => {
+	const clone = _url_make(u);
+	clone.origin = origin;
+	return clone;
+};
+
+export const _url_password = u => u.password;
+export const _url_setPassword = password => u => {
+	const clone = _url_make(u);
+	clone.password = password;
+	return clone;
+};
+
+export const _url_pathname = u => u.pathname;
+export const _url_setPathname = pathname => u => {
+	const clone = _url_make(u);
+	clone.pathname = pathname;
+	return clone;
+};
+
+export const _url_port = u => u.port;
+export const _url_setPort = port => u => {
+	const clone = _url_make(u);
+	clone.port = port;
+	return clone;
+};
+
+export const _url_protocol = u => u.protocol;
+export const _url_setProtocol = protocol => u => {
+	const clone = _url_make(u);
+	clone.protocol = protocol;
+	return clone;
+};
+
+export const _url_search = u => u.search;
+export const _url_setSearch = search => u => {
+	const clone = _url_make(u);
+	clone.search = search;
+	return clone;
+};
+
+export const _url_searchParams = u => u.searchParams;
+
+export const _url_username = u => u.username;
+export const _url_setUsername = username => u => {
+	const clone = _url_make(u);
+	clone.username = username;
 	return clone;
 };
 /** end URL */
