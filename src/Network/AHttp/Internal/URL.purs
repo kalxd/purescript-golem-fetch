@@ -1,4 +1,4 @@
-module Network.Http.Internal.URL where
+module Network.AHttp.Internal.URL where
 
 import Prelude
 
