@@ -65,6 +65,37 @@ export const _search_size = search => search.size;
 export const _search_values = search => search.values();
 /** end URLSearchParams */
 
-export const _url = input => new url.URL(input);
+/** URL */
+export const _url_make = input => new url.URL(input);
 
-export const _show = input => input.toString();
+export const _url_toString = input => input.toString();
+
+export const _url_traceShow = u => {
+	console.log(u);
+	return u;
+};
+
+export const _url_hash = u => u.hash;
+
+export const _url_setHash = hash => u => {
+	const clone = _url_make(u);
+	clone.hash = hash;
+	return clone;
+};
+
+export const _url_host = u => u.host;
+
+export const _url_setHost = host => u => {
+	const clone = _url_make(u);
+	clone.host = host;
+	return clone;
+};
+
+export const _url_hostname = u => u.hostname;
+
+export const _url_setHostname = hostname => u => {
+	const clone = _url_make(u);
+	clone.hostname = hostname;
+	return clone;
+};
+/** end URL */
