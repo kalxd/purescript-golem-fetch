@@ -104,11 +104,6 @@ export const _url_setHref = href => u => {
 };
 
 export const _url_origin = u => u.origin;
-export const _url_setOrigin = origin => u => {
-	const clone = _url_make(u);
-	clone.origin = origin;
-	return clone;
-};
 
 export const _url_password = u => u.password;
 export const _url_setPassword = password => u => {

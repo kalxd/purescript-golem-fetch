@@ -42,7 +42,6 @@ foreign import _url_setHostname :: String -> URL -> URL
 foreign import _url_href :: URL -> String
 foreign import _url_setHref :: String -> URL -> URL
 foreign import _url_origin :: URL -> String
-foreign import _url_setOrigin :: String -> URL -> URL
 foreign import _url_password :: URL -> String
 foreign import _url_setPassword :: String -> URL -> URL
 foreign import _url_pathname :: URL -> String
