@@ -1,42 +1,42 @@
-module Network.AHttp.URL ( module Output
-                         , fromString
-                         , traceShow
-                         , hash
-                         , setHash
-                         , hash'
-                         , setHash'
-                         , host
-                         , setHost
-                         , hostname
-                         , setHostname
-                         , href
-                         , setHref
-                         , origin
-                         , password
-                         , password'
-                         , setPassword
-                         , setPassword'
-                         , pathname
-                         , setPathname
-                         , port
-                         , setPort
-                         , protocol
-                         , setProtocol
-                         , search
-                         , setSearch
-                         , searchParams
-                         , setSearchParams
-                         , username
-                         , username'
-                         , setUsername
-                         , setUsername'
-                         ) where
+module Node.Fetch.URL ( module Output
+                      , fromString
+                      , traceShow
+                      , hash
+                      , setHash
+                      , hash'
+                      , setHash'
+                      , host
+                      , setHost
+                      , hostname
+                      , setHostname
+                      , href
+                      , setHref
+                      , origin
+                      , password
+                      , password'
+                      , setPassword
+                      , setPassword'
+                      , pathname
+                      , setPathname
+                      , port
+                      , setPort
+                      , protocol
+                      , setProtocol
+                      , search
+                      , setSearch
+                      , searchParams
+                      , setSearchParams
+                      , username
+                      , username'
+                      , setUsername
+                      , setUsername'
+                      ) where
 
 import Prelude
 
 import Data.Maybe (Maybe(..), fromMaybe)
-import Network.AHttp.Internal.URL (URL) as Output
-import Network.AHttp.Internal.URL as URL
+import Node.Fetch.Internal.URL (URL) as Output
+import Node.Fetch.Internal.URL as URL
 
 checkEmptyString :: String -> Maybe String
 checkEmptyString "" = Nothing

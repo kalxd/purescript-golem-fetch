@@ -1,5 +1,5 @@
 package:
-  name: agent-fetch
+  name: node-fetch
   dependencies:
     - console
     - effect
