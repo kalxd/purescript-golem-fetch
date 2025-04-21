@@ -2,6 +2,15 @@
 export const _headers_empty = new Headers();
 export const _headers_make = a => new Headers(a);
 
+export const _headers_show = h => {
+	let p = "";
+	for (const [key, value] of h.entries()) {
+		p += `${key}: ${value}, `;
+	}
+
+	return `Headers { ${p}}`;
+};
+
 export const _headers_append = key => value => h => {
 	const clone = _headers_make(h);
 	clone.append(key, value);
@@ -48,7 +57,7 @@ export const _headers_set = key => value => h => {
 	return clone;
 };
 
-export const _header_values = h => {
+export const _headers_values = h => {
 	let xs = [];
 	for (const value of h.values()) {
 		xs.push(value);
