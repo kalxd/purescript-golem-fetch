@@ -6,6 +6,7 @@ package:
     - prelude
     - maybe
     - tuples
+    - aff
   test:
     main: Test.Main
     dependencies: []

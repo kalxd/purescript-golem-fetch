@@ -30,6 +30,8 @@ module Node.Fetch.URL ( module Output
                       , username'
                       , setUsername
                       , setUsername'
+                      , class ToURL
+                      , toURL
                       ) where
 
 import Prelude
@@ -137,3 +139,12 @@ setUsername = URL._url_setUsername
 
 setUsername' :: Maybe String -> URL.URL -> URL.URL
 setUsername' s = setUsername $ maybeEmptyString s
+
+class ToURL a where
+  toURL :: a -> URL.URL
+
+instance ToURL URL.URL where
+  toURL = identity
+
+instance ToURL String where
+  toURL = fromString
