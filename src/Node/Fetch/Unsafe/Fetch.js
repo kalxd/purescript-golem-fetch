@@ -65,3 +65,24 @@ export const _headers_values = h => {
 	return xs;
 };
 /** end headers */
+
+/** fetch */
+export const _fetch_api = url => fetch(url);
+
+export const _fetch_api2 = url => opt => fetch(url, opt);
+/** end fetch */
+
+/** misc */
+export const _unwrap_maybe = isJust => fromJust => input => {
+	let o = {};
+	for (const key in input) {
+		const v = input[key];
+		if (isJust(v)) {
+			o[key] = fromJust(v);
+		}
+	}
+	return o;
+};
+
+export const _unsafe_total = a => a;
+/** end misc */
