@@ -38,8 +38,8 @@ foreign import _response_text :: Response -> Effect (Promise String)
 instance Show Headers where
   show = _headers_show
 
-foreign import _fetch_api :: forall a. a -> Effect Unit
-foreign import _fetch_api2 :: forall a b. a -> b -> Effect Unit
+foreign import _fetch_api :: forall a. a -> Effect (Promise Response)
+foreign import _fetch_api2 :: forall a b. a -> b -> Effect (Promise Response)
 
 data Request = Request { body :: Maybe String
                        , cache :: Maybe String
