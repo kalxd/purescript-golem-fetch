@@ -6,7 +6,6 @@
         "core": {
           "dependencies": [
             "aff",
-            "aff-promise",
             "argonaut",
             "console",
             "effect",
@@ -16,7 +15,6 @@
           ],
           "build_plan": [
             "aff",
-            "aff-promise",
             "argonaut",
             "argonaut-codecs",
             "argonaut-core",
@@ -35,7 +33,6 @@
             "exceptions",
             "exists",
             "foldable-traversable",
-            "foreign",
             "foreign-object",
             "functions",
             "functors",
@@ -635,15 +632,6 @@
         "unsafe-coerce"
       ]
     },
-    "aff-promise": {
-      "type": "registry",
-      "version": "4.0.0",
-      "integrity": "sha256-Kq5EupbUpXeUXx4JqGQE7/RTTz/H6idzWhsocwlEFhM=",
-      "dependencies": [
-        "aff",
-        "foreign"
-      ]
-    },
     "argonaut": {
       "type": "registry",
       "version": "9.0.0",
@@ -879,22 +867,6 @@
         "orders",
         "prelude",
         "tuples"
-      ]
-    },
-    "foreign": {
-      "type": "registry",
-      "version": "7.0.0",
-      "integrity": "sha256-1ORiqoS3HW+qfwSZAppHPWy4/6AQysxZ2t29jcdUMNA=",
-      "dependencies": [
-        "either",
-        "functions",
-        "identity",
-        "integers",
-        "lists",
-        "maybe",
-        "prelude",
-        "strings",
-        "transformers"
       ]
     },
     "foreign-object": {

@@ -7,7 +7,6 @@ package:
     - maybe
     - tuples
     - aff
-    - aff-promise
     - argonaut
   test:
     main: Test.Main
