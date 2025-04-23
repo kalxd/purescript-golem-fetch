@@ -66,6 +66,19 @@ export const _headers_values = h => {
 };
 /** end headers */
 
+/** response */
+export const _response_body = rsp => rsp.body;
+export const _response_bodyUsed = rsp => rsp.bodyUsed;
+export const _response_headers = rsp => rsp.headers
+export const _response_ok = rsp => rsp.ok;
+export const _response_redirected = rsp => rsp.redirected;
+export const _response_status = rsp => rsp.status;
+export const _response_statusText = rsp => rsp.statusText;
+export const _response_type = rsp => rsp.type;
+export const _response_json = rsp => rsp.json();
+export const _response_text = rsp => rsp.text();
+/** end response */
+
 /** fetch */
 export const _fetch_api = url => fetch(url);
 
