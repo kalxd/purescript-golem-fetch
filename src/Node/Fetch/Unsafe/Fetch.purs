@@ -2,11 +2,10 @@ module Node.Fetch.Unsafe.Fetch where
 
 import Prelude
 
-import Control.Promise (Promise)
 import Data.Argonaut (Json)
 import Data.Maybe (Maybe, fromJust, isJust)
 import Data.Tuple (Tuple)
-import Effect (Effect)
+import Effect.Aff.Compat (EffectFnAff)
 
 foreign import data Headers :: Type
 
@@ -32,14 +31,14 @@ foreign import _response_redirected :: Response -> Boolean
 foreign import _response_status :: Response -> Int
 foreign import _response_statusText :: Response -> String
 foreign import _response_type :: Response -> String
-foreign import _response_json :: Response -> Effect (Promise Json)
-foreign import _response_text :: Response -> Effect (Promise String)
+foreign import _response_json :: Response -> EffectFnAff Json
+foreign import _response_text :: Response -> EffectFnAff String
 
 instance Show Headers where
   show = _headers_show
 
-foreign import _fetch_api :: forall a. a -> Effect (Promise Response)
-foreign import _fetch_api2 :: forall a b. a -> b -> Effect (Promise Response)
+foreign import _fetch_api :: forall a. a -> EffectFnAff Response
+foreign import _fetch_api2 :: forall a b. a -> b -> EffectFnAff Response
 
 data Request = Request { body :: Maybe String
                        , cache :: Maybe String

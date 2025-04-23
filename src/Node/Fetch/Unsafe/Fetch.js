@@ -75,14 +75,38 @@ export const _response_redirected = rsp => rsp.redirected;
 export const _response_status = rsp => rsp.status;
 export const _response_statusText = rsp => rsp.statusText;
 export const _response_type = rsp => rsp.type;
-export const _response_json = rsp => rsp.json();
-export const _response_text = rsp => rsp.text();
+export const _response_json = rsp => (onFail, onOk) => {
+	rsp.json().then(onOk).catch(onFail);
+
+	return (_, __, onCancelOk) => {
+		onCancelOk();
+	};
+};
+export const _response_text = rsp => (onFail, onOk) => {
+	rsp.text().then(onOk).catch(onFail);
+
+	return (_, __, onCancelOk) => {
+		onCancelOk();
+	};
+};
 /** end response */
 
 /** fetch */
-export const _fetch_api = url => fetch(url);
+export const _fetch_api = url => (onFail, onOk) => {
+	fetch(url).then(onOk).catch(onFail);
 
-export const _fetch_api2 = url => opt => fetch(url, opt);
+	return (_cancelError, _onCancelFail, onCancelOk) => {
+		onCancelOk();
+	};
+};
+
+export const _fetch_api2 = url => opt => (onFail, onOk) => {
+	fetch(url, opt).then(onOk).catch(onFail);
+
+	return (_cancelError, _onCancelFail, onCancelOk) => {
+		onCancelOk();
+	};
+};
 /** end fetch */
 
 /** misc */

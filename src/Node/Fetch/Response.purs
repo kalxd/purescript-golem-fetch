@@ -12,10 +12,9 @@ module Node.Fetch.Response ( module Output
 
 import Prelude
 
-import Control.Promise (toAffE)
-import Data.Argonaut (class DecodeJson, JsonDecodeError, decodeJson)
-import Data.Either (Either)
+import Data.Argonaut (Json)
 import Effect.Aff (Aff)
+import Effect.Aff.Compat (fromEffectFnAff)
 import Node.Fetch.Unsafe.Fetch (Response) as Output
 import Node.Fetch.Unsafe.Fetch as F
 
@@ -59,8 +58,8 @@ status = F._response_status
 responseType :: F.Response -> ResponseType
 responseType = typeFromString <<< F._response_type
 
-json :: forall json. DecodeJson json => F.Response -> Aff (Either JsonDecodeError json)
-json rsp = decodeJson <$> (toAffE $ F._response_json rsp)
+json :: F.Response -> Aff Json
+json = fromEffectFnAff <<< F._response_json
 
 text :: F.Response -> Aff String
-text = toAffE <<< F._response_text
+text = fromEffectFnAff <<< F._response_text
