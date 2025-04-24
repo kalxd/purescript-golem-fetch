@@ -4,6 +4,7 @@ module Node.Fetch.Request ( RequestCache(..)
                           , RequestMode(..)
                           , RequestPriority(..)
                           , RequestRedirect(..)
+                          , RequestBody
                           , RequestRecord
                           , Request(..)
                           , withRequest
@@ -27,14 +28,22 @@ module Node.Fetch.Request ( RequestCache(..)
                           , removeRedirect
                           , setReferrer
                           , removeReferrer
+                          , setBodyJson'
+                          , setBodyJson
+                          , setBodyForm'
+                          , setBodyForm
+                          , removeBody
                           , defaultRequest
                           , requestToInit
                           ) where
 
 import Prelude
 
+import Data.Argonaut.Core (Json, stringify)
+import Data.Argonaut.Encode (class EncodeJson, encodeJson)
 import Data.Maybe (Maybe(..))
 import Node.Fetch.Headers as H
+import Node.Fetch.URLSearch as S
 import Node.Fetch.Unsafe.Fetch as F
 
 data RequestCache = RequestCacheDefault
@@ -160,7 +169,18 @@ redirectToString RequestRedirectFollow = "RequestRedirectFollow"
 redirectToString RequestRedirectError = "RequestRedirectError"
 redirectToString RequestRedirectManual = "RequestRedirectManual"
 
-type RequestRecord = { body :: Maybe String
+data RequestBody = RequestBodyJson Json
+                 | RequestBodyForm S.URLSearchParams
+
+instance Show RequestBody where
+  show (RequestBodyJson _) = "RequestBodyJson"
+  show (RequestBodyForm _) = "RequestBodyForm"
+
+bodyToString :: RequestBody -> String
+bodyToString (RequestBodyJson json) = stringify json
+bodyToString (RequestBodyForm form) = show form
+
+type RequestRecord = { body :: Maybe RequestBody
                      , cache :: Maybe RequestCache
                      , credentials :: Maybe RequestCredentials
                      , headers :: Maybe H.Headers
@@ -257,9 +277,24 @@ setReferrer c = withRequestFlip _ { referrer = Just c }
 removeReferrer :: Request -> Request
 removeReferrer = withRequestFlip _ { referrer = Nothing }
 
+setBodyJson' :: forall json. EncodeJson json => json -> Request -> Request
+setBodyJson' body = withRequestFlip _ { body = Just $ RequestBodyJson $ encodeJson body }
+
+setBodyJson :: forall json. EncodeJson json => json -> Request -> Request
+setBodyJson body = setBodyJson' body <<< appendHeader "Content-Type" "application/json"
+
+setBodyForm' :: S.URLSearchParams -> Request -> Request
+setBodyForm' form = withRequestFlip _ { body = Just $ RequestBodyForm form }
+
+setBodyForm :: S.URLSearchParams -> Request -> Request
+setBodyForm form = setBodyForm' form <<< appendHeader "Content-Type" "application/x-www-form-urlencoded"
+
+removeBody :: Request -> Request
+removeBody = withRequestFlip _ { body = Nothing }
+
 requestToInit :: Request -> F.Request
 requestToInit (Request req) = F.unwrapRequestToInit req'
-  where req' = F.Request { body: req.body
+  where req' = F.Request { body: map bodyToString req.body
                          , cache: map cacheToString req.cache
                          , credentials: map credentialsToString req.credentials
                          , headers: req.headers
