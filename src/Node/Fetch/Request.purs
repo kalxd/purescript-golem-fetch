@@ -3,8 +3,8 @@ module Node.Fetch.Request ( RequestCache(..)
                           , RequestMethod(..)
                           , RequestMode(..)
                           , RequestPriority(..)
-                          , RequestRedirect
-                          , Request
+                          , RequestRedirect(..)
+                          , Request(..)
                           , defaultRequest
                           , setHeaders
                           , appendHeader
