@@ -110,16 +110,16 @@ export const _fetch_api2 = url => opt => (onFail, onOk) => {
 /** end fetch */
 
 /** misc */
-export const _unwrap_maybe = isJust => fromJust => input => {
+export const _unwrap_maybe = isJust => fromMaybe => input => {
 	let o = {};
 	for (const key in input) {
 		const v = input[key];
 		if (isJust(v)) {
-			o[key] = fromJust(v);
+			o[key] = fromMaybe(undefined)(v);
 		}
 	}
+
+	console.log(o);
 	return o;
 };
-
-export const _unsafe_total = a => a;
 /** end misc */

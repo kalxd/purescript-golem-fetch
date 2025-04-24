@@ -4,9 +4,9 @@ module Node.Fetch.Request ( RequestCache(..)
                           , RequestMode(..)
                           , RequestPriority(..)
                           , RequestRedirect
-                          , RequestWith
                           , Request
                           , defaultRequest
+                          , setHeaders
                           , requestToInit
                           ) where
 
@@ -139,19 +139,17 @@ redirectToString RequestRedirectFollow = "RequestRedirectFollow"
 redirectToString RequestRedirectError = "RequestRedirectError"
 redirectToString RequestRedirectManual = "RequestRedirectManual"
 
-data RequestWith (f :: Type -> Type) = Request { body :: f String
-                                               , cache :: f RequestCache
-                                               , credentials :: f RequestCredentials
-                                               , headers :: f H.Headers
-                                               , keepalive :: f Boolean
-                                               , method :: f RequestMethod
-                                               , mode :: f RequestMode
-                                               , priority :: f RequestPriority
-                                               , redirect :: f RequestRedirect
-                                               , referrer :: f String
-                                               }
-
-type Request = RequestWith Maybe
+data Request = Request { body :: Maybe String
+                       , cache :: Maybe RequestCache
+                       , credentials :: Maybe RequestCredentials
+                       , headers :: Maybe H.Headers
+                       , keepalive :: Maybe Boolean
+                       , method :: Maybe RequestMethod
+                       , mode :: Maybe RequestMode
+                       , priority :: Maybe RequestPriority
+                       , redirect :: Maybe RequestRedirect
+                       , referrer :: Maybe String
+                       }
 
 defaultRequest :: Request
 defaultRequest = Request { body: Nothing
@@ -165,6 +163,9 @@ defaultRequest = Request { body: Nothing
                          , redirect: Nothing
                          , referrer: Nothing
                          }
+
+setHeaders :: H.Headers -> Request -> Request
+setHeaders h (Request req) = Request $ req { headers = Just h}
 
 requestToInit :: Request -> F.Request
 requestToInit (Request req) = F.unwrapRequestToInit req'

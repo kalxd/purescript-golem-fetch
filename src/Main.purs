@@ -4,16 +4,19 @@ import Prelude
 
 import Effect (Effect)
 import Effect.Aff (Aff, launchAff_)
-import Effect.Class (liftEffect)
-import Effect.Class.Console (logShow)
-import Node.Fetch (fetch')
-import Node.Fetch.Response (text)
+import Node.Fetch (fetch)
+import Node.Fetch.Headers as H
+import Node.Fetch.Request (defaultRequest, setHeaders)
+import Node.Fetch.Response (json)
+import Node.Fetch.Unsafe.Trace (traceShow')
 
 fheader :: Aff Unit
 fheader = do
-  rsp <- fetch' "http://httpbin.io/headers"
-  j <- text rsp
-  liftEffect $ logShow j
+  let h = H.fromRecord { "Content-Type": "application/json" }
+  let req = setHeaders h defaultRequest
+  rsp <- fetch "http://httpbin.io/headers" req
+  j <- json rsp
+  pure $ traceShow' j
 
 main :: Effect Unit
 main = launchAff_ fheader

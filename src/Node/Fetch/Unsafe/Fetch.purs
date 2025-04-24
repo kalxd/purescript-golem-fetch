@@ -3,7 +3,7 @@ module Node.Fetch.Unsafe.Fetch where
 import Prelude
 
 import Data.Argonaut (Json)
-import Data.Maybe (Maybe, fromJust, isJust)
+import Data.Maybe (Maybe, fromMaybe, isJust)
 import Data.Tuple (Tuple)
 import Effect.Aff.Compat (EffectFnAff)
 
@@ -52,11 +52,7 @@ data Request = Request { body :: Maybe String
                        , referrer :: Maybe String
                        }
 
-foreign import _unwrap_maybe :: forall x y. (forall a. Maybe a -> Boolean) -> (forall a. Maybe a -> a) -> x -> y
-foreign import _unsafe_total :: forall a b. a -> b
-
-unsafeTotal :: forall a. (Partial => a) -> a
-unsafeTotal = _unsafe_total
+foreign import _unwrap_maybe :: forall x y. (forall a. Maybe a -> Boolean) -> (forall a. a -> Maybe a -> a) -> x -> y
 
 unwrapRequestToInit :: forall a. Request -> a
-unwrapRequestToInit = _unwrap_maybe isJust (unsafeTotal fromJust)
+unwrapRequestToInit (Request req ) = _unwrap_maybe isJust fromMaybe req
