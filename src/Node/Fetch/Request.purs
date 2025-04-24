@@ -7,6 +7,9 @@ module Node.Fetch.Request ( RequestCache(..)
                           , Request
                           , defaultRequest
                           , setHeaders
+                          , appendHeader
+                          , removeHeaders
+                          , setHeader
                           , requestToInit
                           ) where
 
@@ -166,6 +169,19 @@ defaultRequest = Request { body: Nothing
 
 setHeaders :: H.Headers -> Request -> Request
 setHeaders h (Request req) = Request $ req { headers = Just h}
+
+removeHeaders :: Request -> Request
+removeHeaders (Request req) = Request $ req { headers = Nothing }
+
+setHeader :: String -> String -> Request -> Request
+setHeader key value (Request req) = Request $ req { headers = h req.headers }
+  where h (Just headers) = Just $ H.insert key value headers
+        h Nothing = Just $ H.singleton key value
+
+appendHeader :: String -> String -> Request -> Request
+appendHeader key value (Request req) = Request $ req { headers = h req.headers }
+  where h (Just headers) = Just $ H.append key value headers
+        h Nothing = Just $ H.singleton key value
 
 requestToInit :: Request -> F.Request
 requestToInit (Request req) = F.unwrapRequestToInit req'

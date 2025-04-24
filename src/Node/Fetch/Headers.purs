@@ -10,6 +10,9 @@ import Node.Fetch.Unsafe.Fetch as F
 empty :: F.Headers
 empty = F._headers_empty
 
+singleton :: String -> String -> F.Headers
+singleton key value = F._headers_make [[key, value]]
+
 fromRecord :: forall r. {|r} -> F.Headers
 fromRecord = F._headers_make
 
