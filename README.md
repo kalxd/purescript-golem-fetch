@@ -83,7 +83,7 @@ import Node.Fetch.Request (setBodyJson, defaultRequest)
 data Dog = Dog {-# 用户自行实现 #-}
 
 instance EncodeJson Dog where
-  encodeJson = {-# 自行实现 #- }
+  encodeJson = {-# 自行实现 #-}
 
 action :: Aff Unit
 action = do
