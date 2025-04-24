@@ -4,12 +4,30 @@ module Node.Fetch.Request ( RequestCache(..)
                           , RequestMode(..)
                           , RequestPriority(..)
                           , RequestRedirect(..)
+                          , RequestRecord
                           , Request(..)
-                          , defaultRequest
+                          , withRequest
+                          , setCache
+                          , removeCache
+                          , setCredentials
+                          , removeCredential
                           , setHeaders
                           , appendHeader
                           , removeHeaders
                           , setHeader
+                          , setKeepalive
+                          , removeKeepalive
+                          , setMethod
+                          , removeMethod
+                          , setMode
+                          , removeMode
+                          , setPriority
+                          , removePriority
+                          , setRedirect
+                          , removeRedirect
+                          , setReferrer
+                          , removeReferrer
+                          , defaultRequest
                           , requestToInit
                           ) where
 
@@ -142,17 +160,19 @@ redirectToString RequestRedirectFollow = "RequestRedirectFollow"
 redirectToString RequestRedirectError = "RequestRedirectError"
 redirectToString RequestRedirectManual = "RequestRedirectManual"
 
-data Request = Request { body :: Maybe String
-                       , cache :: Maybe RequestCache
-                       , credentials :: Maybe RequestCredentials
-                       , headers :: Maybe H.Headers
-                       , keepalive :: Maybe Boolean
-                       , method :: Maybe RequestMethod
-                       , mode :: Maybe RequestMode
-                       , priority :: Maybe RequestPriority
-                       , redirect :: Maybe RequestRedirect
-                       , referrer :: Maybe String
-                       }
+type RequestRecord = { body :: Maybe String
+                     , cache :: Maybe RequestCache
+                     , credentials :: Maybe RequestCredentials
+                     , headers :: Maybe H.Headers
+                     , keepalive :: Maybe Boolean
+                     , method :: Maybe RequestMethod
+                     , mode :: Maybe RequestMode
+                     , priority :: Maybe RequestPriority
+                     , redirect :: Maybe RequestRedirect
+                     , referrer :: Maybe String
+                     }
+
+newtype Request = Request RequestRecord
 
 defaultRequest :: Request
 defaultRequest = Request { body: Nothing
@@ -166,6 +186,24 @@ defaultRequest = Request { body: Nothing
                          , redirect: Nothing
                          , referrer: Nothing
                          }
+
+withRequest :: Request -> (RequestRecord -> RequestRecord) -> Request
+withRequest (Request req) f = Request $ f req
+
+withRequestFlip :: (RequestRecord -> RequestRecord) -> Request -> Request
+withRequestFlip = flip withRequest
+
+setCache :: RequestCache -> Request -> Request
+setCache c = withRequestFlip _ { cache = Just c }
+
+removeCache :: Request -> Request
+removeCache = withRequestFlip _ { cache = Nothing }
+
+setCredentials :: RequestCredentials -> Request -> Request
+setCredentials c = withRequestFlip _ { credentials = Just c }
+
+removeCredential :: Request -> Request
+removeCredential = withRequestFlip _ { credentials = Nothing }
 
 setHeaders :: H.Headers -> Request -> Request
 setHeaders h (Request req) = Request $ req { headers = Just h}
@@ -182,6 +220,42 @@ appendHeader :: String -> String -> Request -> Request
 appendHeader key value (Request req) = Request $ req { headers = h req.headers }
   where h (Just headers) = Just $ H.append key value headers
         h Nothing = Just $ H.singleton key value
+
+setKeepalive :: Boolean -> Request -> Request
+setKeepalive b = withRequestFlip _ { keepalive = Just b }
+
+removeKeepalive :: Request -> Request
+removeKeepalive = withRequestFlip _ { keepalive = Nothing }
+
+setMethod :: RequestMethod -> Request -> Request
+setMethod c = withRequestFlip _ { method = Just c }
+
+removeMethod :: Request -> Request
+removeMethod = withRequestFlip _ { method = Nothing }
+
+setMode :: RequestMode -> Request -> Request
+setMode c = withRequestFlip _ { mode = Just c }
+
+removeMode :: Request -> Request
+removeMode = withRequestFlip _ { mode = Nothing }
+
+setPriority :: RequestPriority -> Request -> Request
+setPriority p = withRequestFlip _ { priority = Just p }
+
+removePriority :: Request -> Request
+removePriority = withRequestFlip _ { priority = Nothing }
+
+setRedirect :: RequestRedirect -> Request -> Request
+setRedirect c = withRequestFlip _ { redirect = Just c }
+
+removeRedirect :: Request -> Request
+removeRedirect = withRequestFlip _ { redirect = Nothing }
+
+setReferrer :: String -> Request -> Request
+setReferrer c = withRequestFlip _ { referrer = Just c }
+
+removeReferrer :: Request -> Request
+removeReferrer = withRequestFlip _ { referrer = Nothing }
 
 requestToInit :: Request -> F.Request
 requestToInit (Request req) = F.unwrapRequestToInit req'
