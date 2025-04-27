@@ -8,7 +8,6 @@
             "aff",
             "argonaut-codecs",
             "argonaut-core",
-            "console",
             "effect",
             "maybe",
             "prelude",
@@ -20,7 +19,6 @@
             "argonaut-core",
             "arrays",
             "bifunctors",
-            "console",
             "const",
             "contravariant",
             "control",
@@ -66,8 +64,14 @@
           ]
         },
         "test": {
-          "dependencies": [],
-          "build_plan": []
+          "dependencies": [
+            "console"
+          ],
+          "build_plan": [
+            "console",
+            "effect",
+            "prelude"
+          ]
         }
       }
     },

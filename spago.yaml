@@ -1,7 +1,6 @@
 package:
   name: golem-fetch
   dependencies:
-    - console
     - effect
     - prelude
     - maybe
@@ -11,7 +10,8 @@ package:
     - argonaut-core
   test:
     main: Test.Main
-    dependencies: []
+    dependencies:
+      - console
   publish:
     version: 0.1.0
     license: AGPL-3.0
