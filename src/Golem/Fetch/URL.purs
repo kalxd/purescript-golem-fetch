@@ -1,44 +1,44 @@
-module Node.Fetch.URL ( module Output
-                      , fromString
-                      , traceShow
-                      , hash
-                      , setHash
-                      , hash'
-                      , setHash'
-                      , host
-                      , setHost
-                      , hostname
-                      , setHostname
-                      , href
-                      , setHref
-                      , origin
-                      , password
-                      , password'
-                      , setPassword
-                      , setPassword'
-                      , pathname
-                      , setPathname
-                      , port
-                      , setPort
-                      , protocol
-                      , setProtocol
-                      , search
-                      , setSearch
-                      , searchParams
-                      , setSearchParams
-                      , username
-                      , username'
-                      , setUsername
-                      , setUsername'
-                      , class ToURL
-                      , toURL
-                      ) where
+module Golem.Fetch.URL ( module Output
+                       , fromString
+                       , traceShow
+                       , hash
+                       , setHash
+                       , hash'
+                       , setHash'
+                       , host
+                       , setHost
+                       , hostname
+                       , setHostname
+                       , href
+                       , setHref
+                       , origin
+                       , password
+                       , password'
+                       , setPassword
+                       , setPassword'
+                       , pathname
+                       , setPathname
+                       , port
+                       , setPort
+                       , protocol
+                       , setProtocol
+                       , search
+                       , setSearch
+                       , searchParams
+                       , setSearchParams
+                       , username
+                       , username'
+                       , setUsername
+                       , setUsername'
+                       , class ToURL
+                       , toURL
+                       ) where
 
 import Prelude
 
 import Data.Maybe (Maybe(..), fromMaybe)
-import Node.Fetch.Unsafe.URL (URL) as Output
-import Node.Fetch.Unsafe.URL as URL
+import Golem.Fetch.Unsafe.URL (URL) as Output
+import Golem.Fetch.Unsafe.URL as URL
 
 checkEmptyString :: String -> Maybe String
 checkEmptyString "" = Nothing

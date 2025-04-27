@@ -1,5 +1,5 @@
 package:
-  name: node-fetch
+  name: golem-fetch
   dependencies:
     - console
     - effect

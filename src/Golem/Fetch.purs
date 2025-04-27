@@ -1,12 +1,12 @@
-module Node.Fetch where
+module Golem.Fetch where
 
 import Prelude
 
 import Effect.Aff (Aff)
 import Effect.Aff.Compat (fromEffectFnAff)
-import Node.Fetch.Request (Request, requestToInit)
-import Node.Fetch.URL (class ToURL, toURL)
-import Node.Fetch.Unsafe.Fetch as F
+import Golem.Fetch.Request (Request, requestToInit)
+import Golem.Fetch.URL (class ToURL, toURL)
+import Golem.Fetch.Unsafe.Fetch as F
 
 fetch :: forall url. ToURL url => url -> Request -> Aff (F.Response)
 fetch url req = fromEffectFnAff $ F._fetch_api2 (toURL url) req'

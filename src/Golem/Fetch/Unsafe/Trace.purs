@@ -1,4 +1,4 @@
-module Node.Fetch.Unsafe.Trace where
+module Golem.Fetch.Unsafe.Trace where
 
 import Prelude
 

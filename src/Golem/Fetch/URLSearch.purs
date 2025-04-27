@@ -1,13 +1,13 @@
-module Node.Fetch.URLSearch ( module Node.Fetch.URLSearch
-                            , module Output
-                            ) where
+module Golem.Fetch.URLSearch ( module Golem.Fetch.URLSearch
+                             , module Output
+                             ) where
 
 import Prelude hiding (append)
 
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..))
-import Node.Fetch.Unsafe.URL (URLSearchParams) as Output
-import Node.Fetch.Unsafe.URL as URL
+import Golem.Fetch.Unsafe.URL (URLSearchParams) as Output
+import Golem.Fetch.Unsafe.URL as URL
 
 traceShow :: URL.URLSearchParams -> URL.URLSearchParams
 traceShow = URL._search_traceShow

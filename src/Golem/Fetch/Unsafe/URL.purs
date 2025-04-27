@@ -1,4 +1,4 @@
-module Node.Fetch.Unsafe.URL where
+module Golem.Fetch.Unsafe.URL where
 
 import Prelude
 

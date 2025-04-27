@@ -1,22 +1,22 @@
-module Node.Fetch.Response ( module Output
-                           , ResponseType(..)
-                           , bodyUsed
-                           , headers
-                           , ok
-                           , redirected
-                           , status
-                           , responseType
-                           , json
-                           , text
-                           ) where
+module Golem.Fetch.Response ( module Output
+                            , ResponseType(..)
+                            , bodyUsed
+                            , headers
+                            , ok
+                            , redirected
+                            , status
+                            , responseType
+                            , json
+                            , text
+                            ) where
 
 import Prelude
 
 import Data.Argonaut (Json)
 import Effect.Aff (Aff)
 import Effect.Aff.Compat (fromEffectFnAff)
-import Node.Fetch.Unsafe.Fetch (Response) as Output
-import Node.Fetch.Unsafe.Fetch as F
+import Golem.Fetch.Unsafe.Fetch (Response) as Output
+import Golem.Fetch.Unsafe.Fetch as F
 
 data ResponseType = ResponseTypeBasic
                   | ResponseTypeCors

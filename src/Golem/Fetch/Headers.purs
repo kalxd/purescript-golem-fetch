@@ -1,11 +1,11 @@
-module Node.Fetch.Headers ( module Node.Fetch.Headers
-                          , module Output
-                          ) where
+module Golem.Fetch.Headers ( module Golem.Fetch.Headers
+                           , module Output
+                           ) where
 
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..))
-import Node.Fetch.Unsafe.Fetch (Headers) as Output
-import Node.Fetch.Unsafe.Fetch as F
+import Golem.Fetch.Unsafe.Fetch (Headers) as Output
+import Golem.Fetch.Unsafe.Fetch as F
 
 empty :: F.Headers
 empty = F._headers_empty

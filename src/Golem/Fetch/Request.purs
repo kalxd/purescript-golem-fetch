@@ -1,50 +1,50 @@
-module Node.Fetch.Request ( RequestCache(..)
-                          , RequestCredentials(..)
-                          , RequestMethod(..)
-                          , RequestMode(..)
-                          , RequestPriority(..)
-                          , RequestRedirect(..)
-                          , RequestBody
-                          , RequestRecord
-                          , Request(..)
-                          , withRequest
-                          , setCache
-                          , removeCache
-                          , setCredentials
-                          , removeCredential
-                          , setHeaders
-                          , appendHeader
-                          , removeHeaders
-                          , setHeader
-                          , setKeepalive
-                          , removeKeepalive
-                          , setMethod
-                          , removeMethod
-                          , setMode
-                          , removeMode
-                          , setPriority
-                          , removePriority
-                          , setRedirect
-                          , removeRedirect
-                          , setReferrer
-                          , removeReferrer
-                          , setBodyJson'
-                          , setBodyJson
-                          , setBodyForm'
-                          , setBodyForm
-                          , removeBody
-                          , defaultRequest
-                          , requestToInit
-                          ) where
+module Golem.Fetch.Request ( RequestCache(..)
+                           , RequestCredentials(..)
+                           , RequestMethod(..)
+                           , RequestMode(..)
+                           , RequestPriority(..)
+                           , RequestRedirect(..)
+                           , RequestBody
+                           , RequestRecord
+                           , Request(..)
+                           , withRequest
+                           , setCache
+                           , removeCache
+                           , setCredentials
+                           , removeCredential
+                           , setHeaders
+                           , appendHeader
+                           , removeHeaders
+                           , setHeader
+                           , setKeepalive
+                           , removeKeepalive
+                           , setMethod
+                           , removeMethod
+                           , setMode
+                           , removeMode
+                           , setPriority
+                           , removePriority
+                           , setRedirect
+                           , removeRedirect
+                           , setReferrer
+                           , removeReferrer
+                           , setBodyJson'
+                           , setBodyJson
+                           , setBodyForm'
+                           , setBodyForm
+                           , removeBody
+                           , defaultRequest
+                           , requestToInit
+                           ) where
 
 import Prelude
 
 import Data.Argonaut.Core (Json, stringify)
 import Data.Argonaut.Encode (class EncodeJson, encodeJson)
 import Data.Maybe (Maybe(..))
-import Node.Fetch.Headers as H
-import Node.Fetch.URLSearch as S
-import Node.Fetch.Unsafe.Fetch as F
+import Golem.Fetch.Headers as H
+import Golem.Fetch.URLSearch as S
+import Golem.Fetch.Unsafe.Fetch as F
 
 data RequestCache = RequestCacheDefault
                   | RequestCacheNoStore
