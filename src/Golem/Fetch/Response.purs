@@ -12,7 +12,7 @@ module Golem.Fetch.Response ( module Output
 
 import Prelude
 
-import Data.Argonaut (Json)
+import Data.Argonaut.Core (Json)
 import Effect.Aff (Aff)
 import Effect.Aff.Compat (fromEffectFnAff)
 import Golem.Fetch.Unsafe.Fetch (Response) as Output

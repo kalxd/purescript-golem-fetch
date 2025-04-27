@@ -2,7 +2,7 @@ module Golem.Fetch.Unsafe.Fetch where
 
 import Prelude
 
-import Data.Argonaut (Json)
+import Data.Argonaut.Core (Json)
 import Data.Maybe (Maybe, fromMaybe)
 import Data.Tuple (Tuple)
 import Effect.Aff.Compat (EffectFnAff)
