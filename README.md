@@ -1,4 +1,7 @@
-# purescript-node-fetch
+# purescript-Golem-fetch
+
+![Golem](https://s1.52poke.com/wiki/thumb/archive/f/f2/20140413160514%21076Golem.png/120px-076Golem.png)
+
 纯Node.js运行时fetch的purescript实现，无法在浏览器中运行。
 
 该库是fetch的中层封装。
@@ -22,7 +25,7 @@
 可以使用`fetch'`直接发送请求，跟运行`fetch(url)`一样的效果。
 
 ```purescript
-import Node.Fetch (fetch')
+import Golem.Fetch (fetch')
 
 action :: Aff Unit
 action = do
@@ -36,8 +39,8 @@ action = do
 `fetch`接受两个参数，跟node的`fetch`效果一样。
 
 ```purescript
-import Node.Fetch (fetch)
-import Node.Fetch.Request (defaultRequest, setHeader)
+import Golem.Fetch (fetch)
+import Golem.Fetch.Request (defaultRequest, setHeader)
 
 action :: Aff Unit
 action = do
@@ -78,7 +81,7 @@ action = do
 JSON现在互联网最普遍格式，所以理所当然会支持这个格式。
 
 ```purescript
-import Node.Fetch.Request (setBodyJson, defaultRequest)
+import Golem.Fetch.Request (setBodyJson, defaultRequest)
 
 data Dog = Dog {-# 用户自行实现 #-}
 
@@ -100,8 +103,8 @@ action = do
 使用方法同发送JSON，唯一不同在于不依赖`EncodeJson`，仅需要传`URLSearchParams`。
 
 ```purescript
-import Node.Fetch.Request (setBodyForm, defaultRequest)
-import Node.Fetch.URLSearch as S
+import Golem.Fetch.Request (setBodyForm, defaultRequest)
+import Golem.Fetch.URLSearch as S
 
 action :: Aff Unit
 action = do
