@@ -1,7 +1,6 @@
 package:
   name: golem-fetch
   dependencies:
-    - effect
     - prelude
     - maybe
     - tuples
@@ -11,6 +10,7 @@ package:
   test:
     main: Test.Main
     dependencies:
+      - effect
       - console
   publish:
     version: 0.1.0

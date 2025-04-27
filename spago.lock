@@ -8,7 +8,6 @@
             "aff",
             "argonaut-codecs",
             "argonaut-core",
-            "effect",
             "maybe",
             "prelude",
             "tuples"
@@ -65,7 +64,8 @@
         },
         "test": {
           "dependencies": [
-            "console"
+            "console",
+            "effect"
           ],
           "build_plan": [
             "console",
