@@ -11,6 +11,14 @@ package:
   test:
     main: Test.Main
     dependencies: []
+  publish:
+    version: 0.1.0
+    license: AGPL-3.0
+    include:
+      - "src/**/*"
+    location:
+      githubOwner: kalxd
+      githubRepo: purescript-golem-fetch
 workspace:
   packageSet:
     registry: 64.1.1
